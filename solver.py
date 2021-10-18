@@ -38,7 +38,12 @@ def solve_board(board):
         row, col = empty_square
         for i in range(1,10):
             if check_if_valid(i, (row,col), board):
-                return True
+                board[row][col] = i
+
+                if solve_board(board):
+                    return True
+                board[row][col] = 0
+        return False
 
 def check_if_valid(num, pos, board): 
     for i in range(len(board[0])):

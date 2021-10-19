@@ -3,7 +3,7 @@ import React from "react";
 const Square = () => {
   return (
     <div>
-      <h4 className="">0</h4>
+      <h4>0</h4>
     </div>
   );
 };

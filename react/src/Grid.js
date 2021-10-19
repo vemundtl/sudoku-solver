@@ -7,21 +7,33 @@ export default function Grid({ board }) {
     grid.push([]);
     for (let col = 0; col < 9; col++) {
       if ((row + 1) % 3 === 0) {
-        grid[row].push(
-          <div className="">
-            <textarea className="center">
+        if ((col + 1) % 3 === 0) {
+          grid[row].push(
+            <div className="gridlines-bottom gridlines-right center">
               {/* <Square /> */}
               {board[row][col]}
-            </textarea>
+            </div>
+          );
+        } else {
+          grid[row].push(
+            <div className="gridlines-bottom center">
+              {/* <Square /> */}
+              {board[row][col]}
+            </div>
+          );
+        }
+      } else if ((col + 1) % 3 === 0) {
+        grid[row].push(
+          <div className="gridlines-right center">
+            {/* <Square /> */}
+            {board[row][col]}
           </div>
         );
       } else {
         grid[row].push(
-          <div className="">
-            <textarea className="center">
-              {/* <Square /> */}
-              {board[row][col]}
-            </textarea>
+          <div className="center">
+            {/* <Square /> */}
+            {board[row][col]}
           </div>
         );
       }

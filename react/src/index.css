@@ -16,16 +16,19 @@
   border-right: 3px solid black;
 }
 
-/* .center {
+.gridlines-bottom {
+  border-bottom: 3px solid black;
+}
+.gridlines-right {
+  border-right: 3px solid black;
+}
+
+.center {
   display: grid;
   grid-auto-flow: column;
   gap: 4px;
   align-items: center;
   justify-items: center;
-} */
-
-.center {
-  height: 66px;
-  width: 65px;
-  cursor: pointer;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
 }

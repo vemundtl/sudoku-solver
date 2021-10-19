@@ -1,22 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Grid from "./Grid.js";
+
+const board = [
+  [7, 8, 0, 4, 0, 0, 1, 2, 0],
+  [6, 0, 0, 0, 7, 5, 0, 0, 9],
+  [0, 0, 0, 6, 0, 1, 0, 7, 8],
+  [0, 0, 7, 0, 4, 0, 2, 6, 0],
+  [0, 0, 1, 0, 5, 0, 9, 3, 0],
+  [9, 0, 4, 0, 6, 0, 0, 0, 5],
+  [0, 7, 0, 3, 0, 0, 0, 1, 2],
+  [1, 2, 0, 0, 0, 7, 4, 0, 0],
+  [0, 4, 9, 2, 0, 6, 0, 0, 7],
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="">
+      <header className="app2">
+        <Grid board={board} />
       </header>
     </div>
   );

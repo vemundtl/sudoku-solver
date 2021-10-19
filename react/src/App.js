@@ -1,10 +1,5 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Board from "./Board.js";
-import Alert from "./Alert";
-import Puzzle from "./puzzles";
-import { useState } from "react";
-import puzzles from "./puzzles";
 import generator from "sudoku";
 
 const generateSudoku = () => {
@@ -33,8 +28,7 @@ function App() {
   return (
     <div className="">
       <header className="app2">
-        <Board boardState={boardState} />
-        {alert && <Alert />}
+        <Board />
       </header>
     </div>
   );

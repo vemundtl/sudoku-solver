@@ -1,6 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { useState } from "react";
 import generator from "sudoku";
+import Board from "./Board";
 
 const generateSudoku = () => {
   const raw = generator.makepuzzle();
@@ -22,13 +24,12 @@ const generateSudoku = () => {
   return result;
 };
 
-const [boardState, setBoardState] = useState(generateSudoku);
-
 function App() {
+  const [boardState, setBoardState] = useState(generateSudoku);
   return (
     <div className="">
       <header className="app2">
-        <Board />
+        <Board sudoku={boardState} />
       </header>
     </div>
   );

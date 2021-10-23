@@ -1,13 +1,24 @@
 import React from "react";
+import { useState } from "react";
 
-const Square = (props) => {
-  const { field } = props;
+const Square = ({ field }) => {
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleChange = (e) => {
+    if (e.target.value > 10 || e.target.value < 0) {
+      const value = field.value === "" ? "" : parseInt(e.target.value, 10);
+      field.onChange({ ...field, value: value });
+    }
+  };
+
   return (
     <div>
-      <h2>hei</h2>
-      <h2>{field}</h2>
-      console.log({field})
-      <input className="field" value={field.value} readOnly={field.readOnly} />
+      <input
+        className="field"
+        value={field.value}
+        readOnly={field.readOnly}
+        onChange={handleChange}
+      />
     </div>
   );
 };

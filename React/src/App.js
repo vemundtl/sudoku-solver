@@ -25,11 +25,25 @@ const generateSudoku = () => {
   return result;
 };
 
-const onChange = () => {};
-
 function App() {
   const [boardState, setBoardState] = useState(generateSudoku);
+  const [isGameWon, setIsGameWon] = useState(false);
 
+  const checkIsGameWon = () => {
+    checkList = [];
+    for (let i = 0; i < 9; i++) {
+      if (boardState.rows[i]) {
+      }
+    }
+  };
+
+  const onChange = (e) => {
+    let boardStateCopy = boardState;
+    boardStateCopy.rows[e.row].cols[e.col].value = e.value;
+    setBoardState(boardStateCopy);
+  };
+
+  console.log(boardState);
   return (
     <div className="App">
       <header className="app-header">

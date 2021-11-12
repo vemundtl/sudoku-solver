@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const Board = ({ sudoku, onChange }) => {
   return (
-    <div>
+    <>
       {sudoku.rows.map((row) => {
         return (
           <div className="field" key={row.index}>
@@ -16,7 +16,7 @@ const Board = ({ sudoku, onChange }) => {
           </div>
         );
       })}
-    </div>
+    </>
   );
 };
 

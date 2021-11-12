@@ -9,7 +9,6 @@ const generateSudoku = () => {
   const raw = generator.makepuzzle();
   const rawSolution = generator.solvepuzzle(raw);
 
-  const formattedPuzzle = raw.map((e) => (e === null ? null : e + 1));
   const formattedSolution = rawSolution.map((e) => e + 1);
   const result = { rows: [], solution: formattedSolution };
 
@@ -20,7 +19,7 @@ const generateSudoku = () => {
       const col = {
         row: i,
         col: j,
-        value: value,
+        value: value === null ? null : value + 1,
         readOnly: value !== null,
       };
       row.cols.push(col);
@@ -40,15 +39,19 @@ function App() {
     const sudokuToCheck = sudoku.rows
       .map((row) => row.cols.map((col) => col.value))
       .flat();
+    console.log(sudokuToCheck);
+    console.log(boardState.solution);
     for (let i = 0; i < sudokuToCheck.length; i++) {
       if (
         sudokuToCheck[i] === null ||
-        sudokuToCheck[i] !== sudoku.result.solution[i]
+        sudokuToCheck[i] !== boardState.solution[i]
       ) {
         setIsGameWon(false);
+        break;
+      } else {
+        setIsGameWon(true);
       }
     }
-    setIsGameWon(true);
   };
 
   const onChange = (e) => {
@@ -56,7 +59,10 @@ function App() {
       draft.rows[e.row].cols[e.col].value = e.value;
     });
     setBoardState(boardStateCopy);
+    checkIsGameWon(boardState);
     console.log(boardState);
+    console.log(e.row);
+    console.log(e.col);
   };
 
   const solveSudoku = (e) => {
@@ -69,6 +75,7 @@ function App() {
         );
       })
     );
+    setIsGameWon(true);
   };
 
   return (
@@ -76,13 +83,15 @@ function App() {
       <header className="app-header">
         <h3>Sudoku</h3>
       </header>
-      <Board sudoku={boardState} onChange={onChange} />
-      {isGameWon && (
-        <div>
-          <h3>Du har klart det!</h3>
-        </div>
-      )}
-      <button onClick={solveSudoku}>Solve</button>
+      <div className="board">
+        <Board className="field" sudoku={boardState} onChange={onChange} />
+      </div>
+      <div>
+        {isGameWon && <h3 className="">Du har klart det!</h3>}
+        <button className="btn" onClick={solveSudoku}>
+          Solve
+        </button>
+      </div>
     </div>
   );
 }

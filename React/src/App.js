@@ -39,8 +39,6 @@ function App() {
     const sudokuToCheck = sudoku.rows
       .map((row) => row.cols.map((col) => col.value))
       .flat();
-    console.log(sudokuToCheck);
-    console.log(boardState.solution);
     for (let i = 0; i < sudokuToCheck.length; i++) {
       if (
         sudokuToCheck[i] === null ||
@@ -60,9 +58,6 @@ function App() {
     });
     setBoardState(boardStateCopy);
     checkIsGameWon(boardState);
-    console.log(boardState);
-    console.log(e.row);
-    console.log(e.col);
   };
 
   const solveSudoku = (e) => {
@@ -80,11 +75,11 @@ function App() {
 
   return (
     <div className="App">
-      <header className="app-header">
+      <header className="App-header">
         <h3>Sudoku</h3>
       </header>
       <div className="board">
-        <Board className="field" sudoku={boardState} onChange={onChange} />
+        <Board sudoku={boardState} onChange={onChange} />
       </div>
       <div>
         {isGameWon && <h3 className="">Du har klart det!</h3>}

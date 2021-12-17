@@ -4,10 +4,10 @@ import { useState } from "react";
 
 const Board = ({ sudoku, onChange }) => {
   return (
-    <div className="rows">
+    <div>
       {sudoku.rows.map((row) => {
         return (
-          <div className="field" key={row.index}>
+          <div className="rows" key={row.index}>
             {row.cols.map((field) => {
               return (
                 <Square field={field} key={field.col} onChange={onChange} />

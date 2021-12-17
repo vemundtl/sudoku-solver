@@ -33,7 +33,7 @@ function App() {
   const [boardState, setBoardState] = useState(generateSudoku);
   const [isGameWon, setIsGameWon] = useState(false);
 
-  useEffect(() => {}, [boardState]);
+  useEffect((e) => {}, [boardState]);
 
   const checkIsGameWon = (sudoku) => {
     const sudokuToCheck = sudoku.rows
@@ -58,6 +58,8 @@ function App() {
     });
     setBoardState(boardStateCopy);
     checkIsGameWon(boardState);
+    console.log(boardState.solution);
+    checkIsGameWon(boardStateCopy);
   };
 
   const solveSudoku = (e) => {
@@ -75,11 +77,11 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="">
         <h3>Sudoku</h3>
       </header>
       <div className="board">
-        <Board sudoku={boardState} onChange={onChange} />
+        <Board className="" sudoku={boardState} onChange={onChange} />
       </div>
       <div>
         {isGameWon && <h3 className="">Du har klart det!</h3>}
